@@ -1,0 +1,31 @@
+% ==========================================
+% Lectura de datos y gráfica con doble eje Y
+% ==========================================
+
+% 1. Cargar el archivo CSV
+filename = 'Data.csv';
+data = readtable(filename);
+
+% 2. Extraer las columnas
+t = data.t;
+luma = data.Luma;
+luminance = data.Luminance;
+
+% 3. Crear la figura
+figure('Name', 'Experimento - Muestra 2', 'Color', 'w');
+
+% Eje Y izquierdo: Luminancia
+yyaxis left
+plot(t, luminance, 'LineWidth', 1.8, 'Color', [0 0.4470 0.7410]);
+ylabel('Luminancia', 'FontSize', 11, 'FontWeight', 'bold');
+
+% Eje Y derecho: Luma
+yyaxis right
+plot(t, luma, 'LineWidth', 1.8, 'Color', [0.8500 0.3250 0.0980]);
+ylabel('Luma', 'FontSize', 11, 'FontWeight', 'bold');
+
+% Formato general del gráfico
+xlabel('Tiempo (t) [s]', 'FontSize', 11, 'FontWeight', 'bold');
+title('Evolución de Luminancia y Luma en el Tiempo', 'FontSize', 13);
+grid on;
+legend({'Luminancia', 'Luma'}, 'Location', 'northwest');
